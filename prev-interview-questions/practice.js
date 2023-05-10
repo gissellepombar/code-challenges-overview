@@ -30,3 +30,29 @@ function getMult(num) {
 }
 
 console.log(getMult(10))
+
+
+//Write a function that receives two strings and returns the number of characters we would need to rotate the first string forward to match the second.
+function shiftedDiff(first, second) {
+    if (first.length !== second.length) {
+      return -1;
+    }
+    const rotatedStrings = first + first;
+    for (let i = 0; i < first.length; i++) {
+      let match = true;
+      for (let j = 0; j < second.length; j++) {
+        if (rotatedStrings[i + j] !== second[j]) {
+          match = false;
+          break;
+        }
+      }
+      if (match) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  console.log(shiftedDiff("gym", "ymg"))
+
+  //notes: need to go through i (outer loop) first and once the index value charater for that string matches then you iterate through j (innner loop)
