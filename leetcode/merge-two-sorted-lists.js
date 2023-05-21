@@ -21,4 +21,40 @@ function mergeTwoLists(l1, l2) {
     }
 }
 
-console.log(mergeTwoLists([1, 3, 5], [2, 4, 7]))
+console.log(mergeTwoLists([1, 3], [2, 4, 7]))
+
+function mergeSortedLists(list1, list2) {
+    let mergedList = [];
+    let i = 0;
+    let j = 0;
+  
+    while (i < list1.length && j < list2.length) {
+      if (list1[i] < list2[j]) {
+        mergedList.push(list1[i]);
+        i++;
+      } else {
+        mergedList.push(list2[j]);
+        j++;
+      }
+    }
+  
+    // Add any remaining elements from the first list
+    while (i < list1.length) {
+      mergedList.push(list1[i]);
+      i++;
+    }
+  
+    // Add any remaining elements from the second list
+    while (j < list2.length) {
+      mergedList.push(list2[j]);
+      j++;
+    }
+  
+    return mergedList;
+  }
+  
+  // Example usage:
+  const list1 = [1, 3, 5, 7];
+  const list2 = [2, 4, 6, 8];
+  const merged = mergeSortedLists(list1, list2);
+  console.log(merged); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
